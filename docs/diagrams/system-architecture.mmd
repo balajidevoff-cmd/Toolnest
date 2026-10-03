@@ -1,0 +1,39 @@
+graph TD
+    classDef client fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95;
+    classDef router fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af;
+    classDef tool fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#831843;
+    classDef browser fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef storage fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f;
+
+    User[👤 User Browser Session]:::client
+    Router[🧭 React Router v7 Engine]:::router
+    Registry[📋 Central Tool Registry - 40 Tools]:::router
+    Workspace[🖥️ Tool Workspace Layout]:::client
+
+    subgraph Utilities [Client-Side Utility Engines]
+        PDF[📄 PDF Suite - pdf-lib & pdfjs-dist]:::tool
+        Image[🖼️ Image Studio - Canvas & Compressor]:::tool
+        QRDev[⚡ QR & Dev - WebCrypto & qrcode]:::tool
+        Calc[🧮 Calculators - Math & Precision]:::tool
+        Text[✍️ Text & Typography - Safe Markdown]:::tool
+        Sec[🛡️ Privacy & Security - Crypto Entropy]:::tool
+    end
+
+    subgraph BrowserAPIs [Local Browser Sandbox APIs]
+        Canvas[HTML5 Canvas API]:::browser
+        WebCrypto[W3C Web Crypto API]:::browser
+        Workers[Web Workers / ArrayBuffers]:::browser
+        ObjURLs[Temporary Object URLs / Memory]:::browser
+    end
+
+    subgraph LocalState [Device Storage Boundary]
+        LocalStorage[💾 Browser LocalStorage - Theme, Favorites, History]:::storage
+    end
+
+    User -->|Visits Route / Action| Router
+    Router -->|Resolves Slug| Registry
+    Registry -->|Loads Metadata| Workspace
+    Workspace --> Utilities
+    Utilities --> BrowserAPIs
+    Workspace <-->|Preferences & Recents| LocalStorage
+    BrowserAPIs -->|Direct File Export / Download| User

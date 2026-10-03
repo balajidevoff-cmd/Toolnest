@@ -1,0 +1,24 @@
+flowchart LR
+    classDef transient fill:#fee2e2,stroke:#dc2626,stroke-width:1.5px,color:#991b1b;
+    classDef persistent fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af;
+    classDef cloud fill:#f3f4f6,stroke:#9ca3af,stroke-width:1.5px,stroke-dasharray: 5 5,color:#4b5563;
+
+    subgraph RAM [Transient Device RAM - Discarded on Tab Close]
+        Files[Uploaded Files & Images]:::transient
+        Passwords[Generated Passwords & Hashes]:::transient
+        JsonDocs[Formatted JSON Documents]:::transient
+        ObjUrls[Temporary Object URLs]:::transient
+    end
+
+    subgraph LocalStorage [Persisted Device LocalStorage - Never Leaves Machine]
+        ThemePref[Theme Preference - dark / light]:::persistent
+        FavList[Bookmarked Favorites Array]:::persistent
+        RecentList[Recent 20 Launched Tool IDs]:::persistent
+    end
+
+    subgraph CloudZero [External Servers / Third Parties]
+        ZeroUpload[NO Server Uploads • NO Telemetry • NO Ads]:::cloud
+    end
+
+    RAM -.->|Isolated In Browser Memory| RAM
+    LocalStorage -.->|Strictly Client-Side Storage| LocalStorage

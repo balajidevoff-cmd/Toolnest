@@ -39,13 +39,17 @@ export const safeStorage = {
   },
 };
 
-const FAVORITES_KEY = 'toolsnest_favorites';
-const RECENT_KEY = 'toolsnest_recent_tools';
-const THEME_KEY = 'toolsnest_theme';
+const FAVORITES_KEY = 'tovix_favorites';
+const RECENT_KEY = 'tovix_recent_tools';
+const THEME_KEY = 'tovix_theme';
+
+const LEGACY_FAVORITES_KEY = 'toolsnest_favorites';
+const LEGACY_RECENT_KEY = 'toolsnest_recent_tools';
+const LEGACY_THEME_KEY = 'toolsnest_theme';
 
 export function getStoredFavorites(): string[] {
   try {
-    const raw = safeStorage.getItem(FAVORITES_KEY);
+    const raw = safeStorage.getItem(FAVORITES_KEY) || safeStorage.getItem(LEGACY_FAVORITES_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed.filter((id) => typeof id === 'string') : [];
@@ -60,7 +64,7 @@ export function saveStoredFavorites(favorites: string[]): void {
 
 export function getStoredRecentTools(): string[] {
   try {
-    const raw = safeStorage.getItem(RECENT_KEY);
+    const raw = safeStorage.getItem(RECENT_KEY) || safeStorage.getItem(LEGACY_RECENT_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed.filter((id) => typeof id === 'string') : [];
@@ -78,10 +82,11 @@ export function addStoredRecentTool(toolId: string): string[] {
 
 export function clearStoredRecentTools(): void {
   safeStorage.removeItem(RECENT_KEY);
+  safeStorage.removeItem(LEGACY_RECENT_KEY);
 }
 
 export function getStoredTheme(): 'dark' | 'light' {
-  const raw = safeStorage.getItem(THEME_KEY);
+  const raw = safeStorage.getItem(THEME_KEY) || safeStorage.getItem(LEGACY_THEME_KEY);
   if (raw === 'light' || raw === 'dark') return raw;
   if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
     return 'light';

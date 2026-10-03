@@ -11,12 +11,13 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { CATEGORIES } from '../../data/tools';
+import { CATEGORIES, TOOLS } from '../../data/tools';
 
 export const Header: React.FC = () => {
   const { theme, toggleTheme, favorites, setSearchModalOpen } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
+  const [convertDropdownOpen, setConvertDropdownOpen] = useState(false);
   const location = useLocation();
 
   const isMac = typeof window !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
@@ -30,6 +31,7 @@ export const Header: React.FC = () => {
   const closeMobile = () => {
     setMobileMenuOpen(false);
     setCategoriesDropdownOpen(false);
+    setConvertDropdownOpen(false);
   };
 
   return (
@@ -43,10 +45,10 @@ export const Header: React.FC = () => {
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-lg leading-tight tracking-tight text-light-text dark:text-white group-hover:text-purple-400 transition-colors">
-                ToolNest
+                TOVIX
               </span>
               <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                40 Tools
+                {TOOLS.length} Tools
               </span>
             </div>
             <span className="text-[10px] font-medium text-light-muted dark:text-neutral-400 hidden sm:inline">
@@ -56,23 +58,93 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+        <nav className="hidden lg:flex items-center gap-1 text-sm font-medium">
           <Link
             to="/"
-            className={`px-3 py-1.5 rounded-full transition-all text-xs font-semibold ${
+            className={`px-2.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
               isActive('/')
-                ? 'bg-purple-600/15 text-purple-400 border border-purple-500/30'
-                : 'text-light-text dark:text-neutral-300 hover:text-white hover:bg-white/5'
+                ? 'bg-purple-600/15 text-purple-700 dark:text-purple-300 border border-purple-500/30'
+                : 'text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
             }`}
           >
             Home
           </Link>
+
+          <Link
+            to="/tools/pdf-merger"
+            className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+          >
+            Merge PDF
+          </Link>
+
+          <Link
+            to="/tools/pdf-splitter"
+            className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+          >
+            Split PDF
+          </Link>
+
+          <Link
+            to="/tools/pdf-compressor"
+            className="px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+          >
+            Compress PDF
+          </Link>
+
+          {/* Convert PDF dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setConvertDropdownOpen((prev) => !prev)}
+              onBlur={() => setTimeout(() => setConvertDropdownOpen(false), 200)}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+              aria-expanded={convertDropdownOpen}
+            >
+              Convert PDF
+              <ChevronDown className="w-3 h-3 opacity-70" />
+            </button>
+
+            {convertDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-52 p-2 rounded-2xl bg-light-card dark:bg-[#15151c] border border-light-border dark:border-white/10 shadow-2xl z-50 animate-in fade-in duration-100">
+                <Link
+                  to="/tools/pdf-to-word"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-800 dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-700 dark:hover:text-purple-300"
+                >
+                  📄 PDF to Word (.doc)
+                </Link>
+                <Link
+                  to="/tools/word-to-pdf"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-800 dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-700 dark:hover:text-purple-300"
+                >
+                  📝 Word / Text to PDF
+                </Link>
+                <Link
+                  to="/tools/pdf-to-excel"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-800 dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-700 dark:hover:text-purple-300"
+                >
+                  📊 PDF to Excel / CSV
+                </Link>
+                <Link
+                  to="/tools/pdf-to-markdown"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-800 dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-700 dark:hover:text-purple-300"
+                >
+                  #️⃣ PDF to Markdown
+                </Link>
+                <Link
+                  to="/tools/images-to-pdf"
+                  className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-800 dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-700 dark:hover:text-purple-300"
+                >
+                  🖼️ Images to PDF
+                </Link>
+              </div>
+            )}
+          </div>
+
           <Link
             to="/tools"
-            className={`px-3 py-1.5 rounded-full transition-all text-xs font-semibold ${
+            className={`px-2.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
               isActive('/tools')
-                ? 'bg-purple-600/15 text-purple-400 border border-purple-500/30'
-                : 'text-light-text dark:text-neutral-300 hover:text-white hover:bg-white/5'
+                ? 'bg-purple-600/15 text-purple-700 dark:text-purple-300 border border-purple-500/30'
+                : 'text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
             }`}
           >
             All Utilities
@@ -83,11 +155,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setCategoriesDropdownOpen((prev) => !prev)}
               onBlur={() => setTimeout(() => setCategoriesDropdownOpen(false), 200)}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-full transition-all text-xs font-semibold ${
-                isActive('/categories')
-                  ? 'bg-purple-600/15 text-purple-400 border border-purple-500/30'
-                  : 'text-light-text dark:text-neutral-300 hover:text-white hover:bg-white/5'
-              }`}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
               aria-expanded={categoriesDropdownOpen}
               aria-haspopup="true"
             >
@@ -102,7 +170,7 @@ export const Header: React.FC = () => {
                     key={cat.id}
                     to={`/categories/${cat.id}`}
                     onClick={() => setCategoriesDropdownOpen(false)}
-                    className="block px-3 py-2 rounded-xl text-xs font-medium text-light-text dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-400 transition-colors"
+                    className="block px-3 py-2 rounded-xl text-xs font-medium text-slate-800 dark:text-neutral-200 hover:bg-purple-500/10 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                   >
                     {cat.name}
                   </Link>
@@ -112,11 +180,22 @@ export const Header: React.FC = () => {
           </div>
 
           <Link
+            to="/architecture"
+            className={`px-2.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
+              isActive('/architecture')
+                ? 'bg-purple-600/15 text-purple-700 dark:text-purple-300 border border-purple-500/30'
+                : 'text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
+            }`}
+          >
+            Architecture
+          </Link>
+
+          <Link
             to="/favorites"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all text-xs font-semibold ${
+            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
               isActive('/favorites')
-                ? 'bg-purple-600/15 text-purple-400 border border-purple-500/30'
-                : 'text-light-text dark:text-neutral-300 hover:text-white hover:bg-white/5'
+                ? 'bg-purple-600/15 text-purple-700 dark:text-purple-300 border border-purple-500/30'
+                : 'text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
             }`}
           >
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500/20" />
@@ -130,10 +209,10 @@ export const Header: React.FC = () => {
 
           <Link
             to="/recent"
-            className={`px-3 py-1.5 rounded-full transition-all text-xs font-semibold ${
+            className={`px-2.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
               isActive('/recent')
-                ? 'bg-purple-600/15 text-purple-400 border border-purple-500/30'
-                : 'text-light-text dark:text-neutral-300 hover:text-white hover:bg-white/5'
+                ? 'bg-purple-600/15 text-purple-700 dark:text-purple-300 border border-purple-500/30'
+                : 'text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
             }`}
           >
             Recent
@@ -141,27 +220,32 @@ export const Header: React.FC = () => {
 
           <Link
             to="/about"
-            className={`px-3 py-1.5 rounded-full transition-all text-xs font-semibold ${
+            className={`px-2.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
               isActive('/about')
-                ? 'bg-purple-600/15 text-purple-400 border border-purple-500/30'
-                : 'text-light-text dark:text-neutral-300 hover:text-white hover:bg-white/5'
+                ? 'bg-purple-600/15 text-purple-700 dark:text-purple-300 border border-purple-500/30'
+                : 'text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
             }`}
           >
             About
           </Link>
         </nav>
 
-        {/* Right side actions: Quick search button, Theme Toggle, Mobile Hamburger */}
+        {/* Right side actions: Privacy guarantee badge, Quick search button, Theme Toggle, Mobile Hamburger */}
         <div className="flex items-center gap-2">
+          {/* Privacy & No-Login Badge */}
+          <span className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            100% Free & Local • No Accounts
+          </span>
           {/* Quick Search Trigger */}
           <button
             onClick={() => setSearchModalOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-light-border dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.05] hover:border-purple-500/50 text-light-muted dark:text-neutral-300 hover:text-white transition-all text-xs"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-light-border dark:border-white/10 bg-slate-100 dark:bg-white/[0.05] hover:border-purple-500/50 text-slate-700 dark:text-neutral-300 hover:text-purple-700 dark:hover:text-white transition-all text-xs"
             aria-label="Quick search tools"
           >
-            <Search className="w-3.5 h-3.5 text-purple-400" />
+            <Search className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
             <span className="hidden lg:inline text-xs">Search tools...</span>
-            <kbd className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 border border-light-border dark:border-white/10 text-neutral-400">
+            <kbd className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-neutral-400">
               {isMac ? '⌘K' : 'Ctrl+K'}
             </kbd>
           </button>
@@ -169,7 +253,7 @@ export const Header: React.FC = () => {
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-light-border dark:border-white/10 text-light-text dark:text-neutral-300 hover:bg-black/5 dark:hover:bg-white/5 hover:text-purple-400 transition-colors"
+            className="p-2 rounded-full border border-light-border dark:border-white/10 text-slate-700 dark:text-neutral-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-purple-700 dark:hover:text-purple-400 transition-colors"
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
@@ -178,7 +262,7 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="md:hidden p-2 rounded-full border border-light-border dark:border-white/10 text-light-text dark:text-neutral-300 hover:bg-black/5 dark:hover:bg-white/5"
+            className="md:hidden p-2 rounded-full border border-light-border dark:border-white/10 text-slate-700 dark:text-neutral-300 hover:bg-slate-100 dark:hover:bg-white/5"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -193,21 +277,28 @@ export const Header: React.FC = () => {
           <Link
             to="/"
             onClick={closeMobile}
-            className="block px-3 py-2 rounded-lg font-medium text-light-text dark:text-dark-text hover:bg-black/5 dark:hover:bg-white/5"
+            className="block px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-dark-text hover:bg-slate-100 dark:hover:bg-white/5"
           >
             Home
           </Link>
           <Link
             to="/tools"
             onClick={closeMobile}
-            className="block px-3 py-2 rounded-lg font-medium text-light-text dark:text-dark-text hover:bg-black/5 dark:hover:bg-white/5"
+            className="block px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-dark-text hover:bg-slate-100 dark:hover:bg-white/5"
           >
             All Tools
           </Link>
           <Link
+            to="/architecture"
+            onClick={closeMobile}
+            className="block px-3 py-2 rounded-lg font-medium text-purple-700 dark:text-purple-400 hover:bg-slate-100 dark:hover:bg-white/5 font-semibold"
+          >
+            Architecture Center
+          </Link>
+          <Link
             to="/favorites"
             onClick={closeMobile}
-            className="flex items-center justify-between px-3 py-2 rounded-lg font-medium text-light-text dark:text-dark-text hover:bg-black/5 dark:hover:bg-white/5"
+            className="flex items-center justify-between px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-dark-text hover:bg-slate-100 dark:hover:bg-white/5"
           >
             <span className="flex items-center gap-2">
               <Heart className="w-4 h-4 text-rose-500" />
@@ -222,13 +313,13 @@ export const Header: React.FC = () => {
           <Link
             to="/recent"
             onClick={closeMobile}
-            className="block px-3 py-2 rounded-lg font-medium text-light-text dark:text-dark-text hover:bg-black/5 dark:hover:bg-white/5"
+            className="block px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-dark-text hover:bg-slate-100 dark:hover:bg-white/5"
           >
             Recent Tools
           </Link>
 
           <div className="pt-2 border-t border-light-border dark:border-dark-border">
-            <span className="px-3 text-xs font-semibold text-light-muted dark:text-dark-muted uppercase tracking-wider">
+            <span className="px-3 text-xs font-semibold text-slate-500 dark:text-dark-muted uppercase tracking-wider">
               Categories
             </span>
             <div className="mt-1 space-y-1">
@@ -237,7 +328,7 @@ export const Header: React.FC = () => {
                   key={cat.id}
                   to={`/categories/${cat.id}`}
                   onClick={closeMobile}
-                  className="block px-3 py-1.5 rounded-lg text-sm text-light-text dark:text-dark-text hover:bg-black/5 dark:hover:bg-white/5"
+                  className="block px-3 py-1.5 rounded-lg text-sm text-slate-800 dark:text-dark-text hover:bg-slate-100 dark:hover:bg-white/5"
                 >
                   {cat.name}
                 </Link>
@@ -249,14 +340,14 @@ export const Header: React.FC = () => {
             <Link
               to="/about"
               onClick={closeMobile}
-              className="block px-3 py-2 rounded-lg text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text"
+              className="block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-dark-muted hover:text-slate-900 dark:hover:text-dark-text"
             >
-              About ToolNest
+              About TOVIX
             </Link>
             <Link
               to="/privacy"
               onClick={closeMobile}
-              className="block px-3 py-2 rounded-lg text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text"
+              className="block px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-dark-muted hover:text-slate-900 dark:hover:text-dark-text"
             >
               Privacy Policy
             </Link>

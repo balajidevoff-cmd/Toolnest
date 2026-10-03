@@ -110,6 +110,7 @@ export const TOOLS: ToolMetadata[] = [
     route: '/tools/pdf-preview',
     shortInstructions: 'Upload any PDF to examine individual pages with zero cloud processing.',
     privacyLabel: 'Rendered locally using PDF.js.',
+    accentColor: 'purple',
   },
   {
     id: 'word-counter',

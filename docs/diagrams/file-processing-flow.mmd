@@ -1,0 +1,33 @@
+flowchart TD
+    classDef client fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95;
+    classDef validate fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f;
+    classDef engine fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef mem fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af;
+    classDef out fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#581c87;
+
+    Drop[User Selects or Drops File]:::client
+    Dropzone[FileUploadDropzone.tsx]:::client
+
+    subgraph Verification [Client Validation Barrier]
+        TypeCheck{MIME / Extension Valid?}:::validate
+        SizeCheck{Size <= Max MB Limit?}:::validate
+    end
+
+    subgraph MemoryProcessing [Local Sandboxed Processing]
+        Buffer[Read as ArrayBuffer / FileReader]:::mem
+        WorkerEngine[Engine: pdf-lib / Canvas 2D / browser-image-compression]:::engine
+        Progress[Compute Output Bytes in RAM]:::engine
+    end
+
+    subgraph ExportCycle [Download & Memory Cleanup]
+        BlobGen[Create Blob: application/pdf, image/webp]:::mem
+        ObjectUrl[URL.createObjectURL(blob)]:::out
+        TriggerDownload[Synthesize <a> download element]:::out
+        Revoke[URL.revokeObjectURL(url) Cleanup]:::client
+    end
+
+    Drop --> Dropzone --> TypeCheck
+    TypeCheck -- No --> RejectType[Reject Unsupported Format]:::validate
+    TypeCheck -- Yes --> SizeCheck
+    SizeCheck -- Exceeds --> RejectSize[Show Maximum MB Limit Error]:::validate
+    SizeCheck -- Valid --> Buffer --> WorkerEngine --> Progress --> BlobGen --> ObjectUrl --> TriggerDownload --> Revoke

@@ -1,0 +1,29 @@
+graph TD
+    classDef threat fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#991b1b;
+    classDef shield fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef note fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f;
+
+    T1[Threat: Malicious File Payload]:::threat
+    M1[Mitigation: Strictly Client-Side Parsers, No Server Execution]:::shield
+
+    T2[Threat: Cross-Site Scripting via Markdown]:::threat
+    M2[Mitigation: Custom HTML Sanitizer strips script and onerror tags]:::shield
+
+    T3[Threat: Data Exfiltration via Network]:::threat
+    M3[Mitigation: 0 outbound backend APIs, strict Content-Security-Policy]:::shield
+
+    T4[Threat: Memory Leak via Large Files]:::threat
+    M4[Mitigation: Size caps & explicit URL.revokeObjectURL calls]:::shield
+
+    T5[Threat: Malformed JSON Crash]:::threat
+    M5[Mitigation: Safe try/catch wrappers with clear error toasts]:::shield
+
+    T6[Threat: Weak Password Entropy]:::threat
+    M6[Mitigation: crypto.getRandomValues cryptographic randomness]:::shield
+
+    T1 --> M1
+    T2 --> M2
+    T3 --> M3
+    T4 --> M4
+    T5 --> M5
+    T6 --> M6

@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import * as pdfjsLib from 'pdfjs-dist';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RefreshCw, FileText, Loader2, AlertCircle } from 'lucide-react';
-
-// Configure PDF.js worker using matching library version
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
+import { pdfjsLib } from '../../../utils/pdfWorkerSetup';
 
 export const PdfPreviewTool: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

@@ -6,7 +6,7 @@ import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 export const Sha256Tool: React.FC = () => {
   const { addToast } = useApp();
   const [activeTab, setActiveTab] = useState<'text' | 'file'>('text');
-  const [inputText, setInputText] = useState('ToolNest everyday utility hub');
+  const [inputText, setInputText] = useState('TOVIX everyday utility hub');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [hashResult, setHashResult] = useState<string>('');
   const [isHashing, setIsHashing] = useState<boolean>(false);

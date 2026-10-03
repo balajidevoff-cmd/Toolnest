@@ -4,7 +4,7 @@ import { useApp } from '../../../context/AppContext';
 
 export const JsonFormatterTool: React.FC = () => {
   const { addToast } = useApp();
-  const [inputJson, setInputJson] = useState('{\n  "app": "ToolNest",\n  "status": "production-ready",\n  "features": ["local-first", "fast", "private"]\n}');
+  const [inputJson, setInputJson] = useState('{\n  "app": "TOVIX",\n  "status": "production-ready",\n  "features": ["local-first", "fast", "private"]\n}');
   const [indentSpaces, setIndentSpaces] = useState<2 | 4>(2);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);

@@ -32,13 +32,13 @@ export const AboutPage: React.FC = () => {
           <span>The Problem We Solved</span>
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-light-text dark:text-white">
-          Why did we build ToolNest?
+          Why did we build TOVIX?
         </h2>
         <p className="text-sm text-light-muted dark:text-neutral-300 leading-relaxed">
           Every day, millions of people jump between cluttered websites just to compress a single PDF, format JSON, resize a screenshot, calculate semester CGPA, or generate a safe password. Many of these websites are packed with intrusive ads, force signups, or secretly upload private files to remote cloud servers.
         </p>
         <p className="text-sm text-light-muted dark:text-neutral-300 leading-relaxed">
-          <strong className="text-light-text dark:text-white">ToolNest</strong> was created to solve this once and for all. We bring together 40 essential everyday utilities into one elegant, fast, and privacy-conscious web suite where your data stays on your machine.
+          <strong className="text-light-text dark:text-white">TOVIX</strong> was created to solve this once and for all. We bring together essential everyday utilities into one elegant, fast, and privacy-conscious web suite where your data stays on your machine.
         </p>
       </div>
 
@@ -84,23 +84,23 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* Our Commitments */}
-      <div className="p-8 rounded-3xl bg-purple-950/20 border border-purple-500/20 space-y-4">
-        <h2 className="text-xl font-bold text-light-text dark:text-white flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-editorial-yellow" />
-          The ToolNest Standards
+      <div className="p-8 rounded-3xl bg-purple-100/60 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-500/20 space-y-4">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <Sparkles className="w-5 h-5 text-purple-600 dark:text-editorial-yellow" />
+          The TOVIX Standards
         </h2>
-        <ul className="space-y-3 text-sm text-light-muted dark:text-neutral-300">
+        <ul className="space-y-3 text-sm text-slate-700 dark:text-neutral-300">
           <li className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-            <span><strong className="text-white">Zero Account Requirements:</strong> Jump in and get your work done immediately without creating an account or logging in.</span>
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <span><strong className="text-slate-900 dark:text-white">Zero Account Requirements:</strong> Jump in and get your work done immediately without creating an account or logging in.</span>
           </li>
           <li className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-            <span><strong className="text-white">Local Execution:</strong> We prioritize browser-native APIs (Web Crypto, HTML5 Canvas, PDF-lib) so your documents don&apos;t get transmitted across third-party networks.</span>
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <span><strong className="text-slate-900 dark:text-white">Local Execution:</strong> We prioritize browser-native APIs (Web Crypto, HTML5 Canvas, PDF-lib) so your documents don&apos;t get transmitted across third-party networks.</span>
           </li>
           <li className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-            <span><strong className="text-white">Real Computation:</strong> No dummy buttons, fake progress bars, or placeholder mockups. Every tool performs real computation.</span>
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <span><strong className="text-slate-900 dark:text-white">Real Computation:</strong> No dummy buttons, fake progress bars, or placeholder mockups. Every tool performs real computation.</span>
           </li>
         </ul>
       </div>

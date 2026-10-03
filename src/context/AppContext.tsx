@@ -35,15 +35,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
-  // Initialize from storage on mount
-  useEffect(() => {
-    const storedTheme = getStoredTheme();
-    setTheme(storedTheme);
-    if (storedTheme === 'dark') {
+  const applyThemeToDom = (t: 'dark' | 'light') => {
+    if (t === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.style.colorScheme = t;
+  };
+
+  // Initialize from storage on mount
+  useEffect(() => {
+    const storedTheme = getStoredTheme();
+    setTheme(storedTheme);
+    applyThemeToDom(storedTheme);
 
     setFavorites(getStoredFavorites());
     setRecentTools(getStoredRecentTools());
@@ -53,11 +59,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
     saveStoredTheme(nextTheme);
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    applyThemeToDom(nextTheme);
   };
 
   const toggleFavorite = (toolId: string) => {

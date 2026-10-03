@@ -26,6 +26,8 @@ export interface ToolMetadata {
   route: string;
   shortInstructions: string;
   privacyLabel: string;
+  badge?: 'new' | 'popular' | string;
+  accentColor?: 'red' | 'blue' | 'green' | 'purple' | 'orange' | 'indigo' | 'emerald';
 }
 
 export interface ToastMessage {

@@ -54,7 +54,7 @@ export const SearchModal: React.FC = () => {
       >
         {/* Search Input Bar */}
         <div className="flex items-center px-4 py-3.5 border-b border-light-border dark:border-dark-border">
-          <Search className="w-5 h-5 text-light-muted dark:text-dark-muted shrink-0 mr-3" />
+          <Search className="w-5 h-5 text-slate-400 dark:text-dark-muted shrink-0 mr-3" />
           <input
             ref={inputRef}
             type="text"
@@ -65,18 +65,18 @@ export const SearchModal: React.FC = () => {
             }}
             onKeyDown={handleKeyDown}
             placeholder="Search tools by name, task, keyword (e.g. compress, qr, cgpa)..."
-            className="w-full bg-transparent text-light-text dark:text-dark-text placeholder:text-light-muted dark:placeholder:text-dark-muted focus:outline-none text-base"
+            className="w-full bg-transparent text-slate-900 dark:text-dark-text placeholder:text-slate-400 dark:placeholder:text-dark-muted focus:outline-none text-base"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 rounded-md text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text mr-1"
+              className="p-1 rounded-md text-slate-400 dark:text-dark-muted hover:text-slate-700 dark:hover:text-dark-text mr-1"
               aria-label="Clear search query"
             >
               <X className="w-4 h-4" />
             </button>
           )}
-          <kbd className="hidden sm:inline-block px-2 py-0.5 text-xs font-mono rounded bg-black/5 dark:bg-white/10 text-light-muted dark:text-dark-muted border border-light-border dark:border-dark-border">
+          <kbd className="hidden sm:inline-block px-2 py-0.5 text-xs font-mono rounded bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-dark-muted border border-slate-200 dark:border-dark-border">
             ESC
           </kbd>
         </div>
@@ -92,40 +92,40 @@ export const SearchModal: React.FC = () => {
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={`flex items-center justify-between p-3 rounded-xl text-left transition-colors ${
                     selectedIndex === idx
-                      ? 'bg-brand-purple/15 text-brand-purple dark:text-brand-accentLight'
-                      : 'hover:bg-black/5 dark:hover:bg-white/5 text-light-text dark:text-dark-text'
+                      ? 'bg-purple-100 dark:bg-brand-purple/15 text-purple-800 dark:text-brand-accentLight'
+                      : 'hover:bg-slate-100 dark:hover:bg-white/5 text-slate-800 dark:text-dark-text'
                   }`}
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
                     <div
                       className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
                         selectedIndex === idx
-                          ? 'bg-brand-purple text-white shadow-sm'
-                          : 'bg-black/5 dark:bg-white/5 text-brand-purple dark:text-brand-accentLight'
+                          ? 'bg-purple-600 text-white shadow-sm'
+                          : 'bg-purple-50 dark:bg-white/5 text-purple-700 dark:text-brand-accentLight'
                       }`}
                     >
                       <DynamicIcon name={tool.icon} className="w-4 h-4" />
                     </div>
                     <div className="truncate">
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-sm text-light-text dark:text-dark-text">
+                        <span className="font-semibold text-sm text-slate-900 dark:text-dark-text">
                           {tool.name}
                         </span>
-                        <span className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 text-light-muted dark:text-dark-muted">
+                        <span className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-dark-muted">
                           {tool.category.replace('-', ' ')}
                         </span>
                       </div>
-                      <p className="text-xs text-light-muted dark:text-dark-muted truncate mt-0.5">
+                      <p className="text-xs text-slate-600 dark:text-dark-muted truncate mt-0.5">
                         {tool.description}
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 shrink-0 text-light-muted dark:text-dark-muted ml-2 opacity-60" />
+                  <ArrowRight className="w-4 h-4 shrink-0 text-slate-400 dark:text-dark-muted ml-2 opacity-60" />
                 </button>
               ))}
             </div>
           ) : (
-            <div className="py-12 text-center text-light-muted dark:text-dark-muted">
+            <div className="py-12 text-center text-slate-500 dark:text-dark-muted">
               <p className="text-sm">No tools found matching &quot;{query}&quot;</p>
               <p className="text-xs mt-1">Try keywords like PDF, resize, password, or calculator.</p>
             </div>
@@ -133,9 +133,9 @@ export const SearchModal: React.FC = () => {
         </div>
 
         {/* Footer shortcuts info */}
-        <div className="px-4 py-2.5 bg-black/[0.02] dark:bg-white/[0.02] border-t border-light-border dark:border-dark-border flex items-center justify-between text-xs text-light-muted dark:text-dark-muted">
-          <span>Navigate with <kbd className="px-1 py-0.5 rounded bg-black/5 dark:bg-white/10 font-mono">↑</kbd> <kbd className="px-1 py-0.5 rounded bg-black/5 dark:bg-white/10 font-mono">↓</kbd></span>
-          <span>Select with <kbd className="px-1 py-0.5 rounded bg-black/5 dark:bg-white/10 font-mono">Enter</kbd></span>
+        <div className="px-4 py-2.5 bg-slate-50 dark:bg-white/[0.02] border-t border-light-border dark:border-dark-border flex items-center justify-between text-xs text-slate-600 dark:text-dark-muted">
+          <span>Navigate with <kbd className="px-1 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-mono text-slate-700 dark:text-slate-300">↑</kbd> <kbd className="px-1 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-mono text-slate-700 dark:text-slate-300">↓</kbd></span>
+          <span>Select with <kbd className="px-1 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-mono text-slate-700 dark:text-slate-300">Enter</kbd></span>
         </div>
       </div>
     </div>

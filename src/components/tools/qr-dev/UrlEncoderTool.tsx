@@ -4,7 +4,7 @@ import { useApp } from '../../../context/AppContext';
 
 export const UrlEncoderTool: React.FC = () => {
   const { addToast } = useApp();
-  const [input, setInput] = useState('https://toolsnest.dev/search?q=pdf merger & tools=all');
+  const [input, setInput] = useState('https://tovix.dev/search?q=pdf merger & tools=all');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState<'encode' | 'decode'>('encode');
   const [error, setError] = useState<string | null>(null);

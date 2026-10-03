@@ -19,10 +19,17 @@ import {
   cleanWhitespace,
 } from '../utils/textTransform';
 
+import {
+  convertPagesToMarkdown,
+  createWordDocumentBlob,
+  extractTableDataFromPages,
+} from '../utils/pdfExtractor';
+
 describe('Tool Registry Specifications', () => {
   it('contains exactly 40 tools with all required fields', () => {
     expect(TOOLS.length).toBe(40);
   });
+
 
   it('guarantees unique tool IDs and slugs', () => {
     const ids = new Set<string>();
@@ -260,7 +267,7 @@ describe('Password and Passphrase Security', () => {
 
 describe('Text Transformations', () => {
   it('converts to Title Case, camelCase, and kebab-case', () => {
-    expect(toTitleCase('hello world from toolnest')).toBe('Hello World From Toolnest');
+    expect(toTitleCase('hello world from tovix')).toBe('Hello World From Tovix');
     expect(toSentenceCase('hello. world! how are you?')).toBe('Hello. World! How are you?');
     expect(toCamelCase('hello world test')).toBe('helloWorldTest');
     expect(toKebabCase('Hello World Test')).toBe('hello-world-test');
@@ -268,8 +275,8 @@ describe('Text Transformations', () => {
   });
 
   it('generates clean SEO URL slugs', () => {
-    const slug = generateSlug('How to use ToolNest in 2025?!');
-    expect(slug).toBe('how-to-use-toolnest-in-2025');
+    const slug = generateSlug('How to use TOVIX in 2025?!');
+    expect(slug).toBe('how-to-use-tovix-in-2025');
   });
 
   it('cleans redundant whitespace and blank lines', () => {
@@ -282,3 +289,48 @@ describe('Text Transformations', () => {
     expect(cleaned).toBe('Hello world\nNext line');
   });
 });
+
+describe('Client-Side PDF & Document Extraction Utilities', () => {
+  it('converts extracted pages into Markdown format', () => {
+    const mockPages = [
+      {
+        pageNumber: 1,
+        text: 'ANNUAL REPORT\nIntroduction\nThis is a sample document.',
+        lines: ['ANNUAL REPORT', 'Introduction', 'This is a sample document.'],
+      },
+    ];
+    const md = convertPagesToMarkdown(mockPages);
+    expect(md).toContain('<!-- Page 1 -->');
+    expect(md).toContain('## ANNUAL REPORT');
+    expect(md).toContain('This is a sample document.');
+  });
+
+  it('generates an official Word document blob with HTML Word XML', () => {
+    const mockPages = [
+      {
+        pageNumber: 1,
+        text: 'Title\nBody text.',
+        lines: ['Title', 'Body text.'],
+      },
+    ];
+    const blob = createWordDocumentBlob('TestDoc', mockPages);
+    expect(blob).toBeInstanceOf(Blob);
+    expect(blob.type).toBe('application/msword;charset=utf-8');
+    expect(blob.size).toBeGreaterThan(50);
+  });
+
+  it('detects tabular lines and parses rows for Excel/CSV export', () => {
+    const mockPages = [
+      {
+        pageNumber: 1,
+        text: 'Item\tPrice\tQty\nApple\t$1.50\t10',
+        lines: ['Item\tPrice\tQty', 'Apple\t$1.50\t10'],
+      },
+    ];
+    const rows = extractTableDataFromPages(mockPages);
+    expect(rows.length).toBe(2);
+    expect(rows[0]).toEqual(['Item', 'Price', 'Qty']);
+    expect(rows[1]).toEqual(['Apple', '$1.50', '10']);
+  });
+});
+

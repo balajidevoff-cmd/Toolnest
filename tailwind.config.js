@@ -9,20 +9,20 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: '#0c0c0e',
-          secondary: '#121216',
-          card: '#16161c',
-          elevated: '#1c1c24',
-          border: '#272733',
-          text: '#f4f4f6',
-          muted: '#8e8e9e',
+          bg: '#090914',
+          secondary: '#10101c',
+          card: '#151525',
+          elevated: '#1a1a2e',
+          border: '#34344d',
+          text: '#f5f3ff',
+          muted: '#b5b5cc',
         },
         light: {
-          bg: '#f8f8fa',
+          bg: '#f8fafc',
           card: '#ffffff',
-          text: '#121216',
-          muted: '#636373',
-          border: '#e4e4ec',
+          text: '#0f172a',
+          muted: '#475569',
+          border: '#e2e8f0',
         },
         editorial: {
           purple: {

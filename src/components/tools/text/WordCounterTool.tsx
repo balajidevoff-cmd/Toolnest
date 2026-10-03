@@ -5,7 +5,7 @@ import { useApp } from '../../../context/AppContext';
 export const WordCounterTool: React.FC = () => {
   const { addToast } = useApp();
   const [text, setText] = useState(
-    'ToolNest is a free, privacy-focused collection of everyday digital utilities. Designed for college students, developers, designers, and creators who need fast, local-first tools without intrusive ads.'
+    'TOVIX is a free, privacy-focused collection of everyday digital utilities. Designed for college students, developers, designers, and creators who need fast, local-first tools without intrusive ads.'
   );
 
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;

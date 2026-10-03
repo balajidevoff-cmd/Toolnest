@@ -1,0 +1,50 @@
+graph TD
+    classDef core fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95;
+    classDef layout fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af;
+    classDef page fill:#f1f5f9,stroke:#64748b,stroke-width:2px,color:#0f172a;
+    classDef module fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+
+    Entry[src/main.tsx - Entry Point]:::core
+    App[src/App.tsx - Router & Lazy Provider]:::core
+    Context[src/context/AppContext.tsx - Theme, Favorites, Recents, Toasts]:::core
+    Layout[src/components/layout/AppLayout.tsx]:::layout
+
+    subgraph LayoutElements [Global Layout Shell]
+        Header[src/components/layout/Header.tsx]:::layout
+        FloatingDock[src/components/layout/FloatingDock.tsx]:::layout
+        Footer[src/components/layout/Footer.tsx]:::layout
+        SearchModal[src/components/common/SearchModal.tsx]:::layout
+        ToastContainer[src/components/common/ToastContainer.tsx]:::layout
+    end
+
+    subgraph AppPages [Application Route Pages]
+        HomePage[src/pages/HomePage.tsx]:::page
+        ToolsPage[src/pages/ToolsPage.tsx]:::page
+        WorkspacePage[src/pages/ToolWorkspacePage.tsx]:::page
+        CategoryPage[src/pages/CategoryPage.tsx]:::page
+        ArchitecturePage[src/pages/ArchitecturePage.tsx]:::page
+        FavoritesPage[src/pages/FavoritesPage.tsx]:::page
+        RecentPage[src/pages/RecentPage.tsx]:::page
+        AboutPage[src/pages/AboutPage.tsx]:::page
+        PrivacyPage[src/pages/PrivacyPage.tsx]:::page
+    end
+
+    subgraph ToolEngine [Registry & Tool Components]
+        ToolRegistry[src/data/tools.ts - 40 Metadata Definitions]:::core
+        WorkspaceLayout[src/components/tools/ToolWorkspaceLayout.tsx]:::layout
+        PdfTools[src/components/tools/pdf/*]:::module
+        ImageTools[src/components/tools/image/*]:::module
+        QrDevTools[src/components/tools/qr-dev/*]:::module
+        CalcTools[src/components/tools/calculators/*]:::module
+        TextTools[src/components/tools/text/*]:::module
+        SecTools[src/components/tools/security/*]:::module
+    end
+
+    Entry --> App
+    App --> Context
+    App --> Layout
+    Layout --> LayoutElements
+    Layout --> AppPages
+    WorkspacePage --> ToolRegistry
+    WorkspacePage --> WorkspaceLayout
+    WorkspaceLayout --> PdfTools & ImageTools & QrDevTools & CalcTools & TextTools & SecTools

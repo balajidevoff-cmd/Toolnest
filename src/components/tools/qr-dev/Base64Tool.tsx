@@ -4,7 +4,7 @@ import { useApp } from '../../../context/AppContext';
 
 export const Base64Tool: React.FC = () => {
   const { addToast } = useApp();
-  const [input, setInput] = useState('ToolNest: Free & Secure 🚀');
+  const [input, setInput] = useState('TOVIX: Free & Secure 🚀');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState<'encode' | 'decode'>('encode');
   const [error, setError] = useState<string | null>(null);

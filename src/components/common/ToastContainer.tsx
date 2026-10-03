@@ -11,10 +11,10 @@ export const ToastContainer: React.FC = () => {
     <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
       {toasts.map((toast) => {
         const icons = {
-          success: <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />,
-          error: <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />,
-          warning: <AlertCircle className="w-5 h-5 text-amber-400 shrink-0" />,
-          info: <Info className="w-5 h-5 text-indigo-400 shrink-0" />,
+          success: <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />,
+          error: <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" />,
+          warning: <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />,
+          info: <Info className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />,
         };
 
         const borderColors = {

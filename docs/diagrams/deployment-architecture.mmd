@@ -1,0 +1,21 @@
+graph LR
+    classDef dev fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95;
+    classDef build fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af;
+    classDef host fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef client fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f;
+
+    Code[Developer Working Tree]:::dev
+    Git[Git Repository - main branch]:::dev
+    Build[Vite 8.3 & TypeScript tsc -b]:::build
+    Bundle[Optimized Dist Assets - HTML, CSS, Split JS Chunks]:::build
+    Host[Static Hosting - Vercel / GitHub Pages / Cloudflare]:::host
+    CDN[Edge CDN Distribution]:::host
+    Browser[User Web Browser]:::client
+
+    Code -->|git commit & push| Git
+    Git -->|CI / CD Pipeline| Build
+    Build -->|Generates Production Bundle| Bundle
+    Bundle -->|Static Deploy| Host
+    Host --> CDN
+    CDN -->|Loads Static Assets Once| Browser
+    Browser -->|All Work Done Locally| Browser

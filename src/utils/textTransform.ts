@@ -1,5 +1,5 @@
 /**
- * Text transformation utilities for ToolNest writing suite.
+ * Text transformation utilities for TOVIX writing suite.
  */
 
 export function toTitleCase(str: string): string {

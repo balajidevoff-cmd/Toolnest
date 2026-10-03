@@ -1,0 +1,29 @@
+flowchart TD
+    classDef startNode fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95;
+    classDef stepNode fill:#f1f5f9,stroke:#64748b,stroke-width:1.5px,color:#0f172a;
+    classDef decisionNode fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f;
+    classDef successNode fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef errorNode fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#991b1b;
+
+    Start([1. User Opens Tool Route /tools/:slug]):::startNode
+    Resolve[2. Resolve Route & Lookup Tool in tools.ts]:::stepNode
+    Mount[3. Mount ToolWorkspaceLayout & Utility Component]:::stepNode
+    AddRecent[4. Record Tool ID in LocalStorage Recents]:::stepNode
+    Input[5. User Provides Input - Text, Upload, or Slider]:::stepNode
+    Validate{6. Validation Check - Size, Type, Syntax}:::decisionNode
+
+    Invalid[Show Inline Error & Alert Toast]:::errorNode
+    Process[7. Local In-Memory Processing - Web Worker / Canvas / WASM]:::stepNode
+    ProcCheck{8. Processing Success?}:::decisionNode
+
+    ProcFail[Show Meaningful Error Message & Reset State]:::errorNode
+    Result[9. Generate Result - ArrayBuffer / DataURL / Blob]:::successNode
+    Preview[10. Display Visual Preview or Formatted Output]:::stepNode
+    Action[11. User Action - Copy Clipboard or Trigger Download]:::stepNode
+    Cleanup[12. Revoke Temporary Object URLs & Free Memory]:::stepNode
+
+    Start --> Resolve --> Mount --> AddRecent --> Input --> Validate
+    Validate -- Invalid Input --> Invalid --> Input
+    Validate -- Valid Input --> Process --> ProcCheck
+    ProcCheck -- Error / Exception --> ProcFail --> Input
+    ProcCheck -- Success --> Result --> Preview --> Action --> Cleanup

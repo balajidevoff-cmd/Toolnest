@@ -57,7 +57,7 @@ export function renderSafeMarkdown(markdown: string): string {
 
     // Bullet lists
     if (line.startsWith('- ') || line.startsWith('* ')) {
-      htmlLines.push(`<li class="ml-4 list-disc text-xs my-0.5">${parseInline(line.slice(2))}</li>`);
+      htmlLines.push(`<li class="ml-4 list-disc text-xs my-0.5 text-light-text dark:text-dark-text">${parseInline(line.slice(2))}</li>`);
       continue;
     }
 
@@ -89,7 +89,7 @@ function parseInline(text: string): string {
     // Italic: *text*
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     // Inline code: `code`
-    .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[11px] text-brand-purple">$1</code>')
+    .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/10 font-mono text-[11px] text-purple-700 dark:text-brand-accentLight border border-slate-200 dark:border-white/10">$1</code>')
     // Links: [text](url) - ensure url starts with http/https to prevent javascript: pseudo protocols
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand-purple hover:underline">$1</a>');
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-purple-700 dark:text-brand-accentLight font-medium hover:underline">$1</a>');
 }

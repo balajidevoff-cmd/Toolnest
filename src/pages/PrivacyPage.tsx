@@ -13,7 +13,7 @@ export const PrivacyPage: React.FC = () => {
           Privacy Policy & Local Processing Guarantee
         </h1>
         <p className="text-sm text-light-muted dark:text-dark-muted leading-relaxed">
-          At ToolNest, we believe standard utilities should not compromise your privacy or harvest your documents. Here is a clear, transparent explanation of how our platform handles your data.
+          At TOVIX, we believe standard utilities should not compromise your privacy or harvest your documents. Here is a clear, transparent explanation of how our platform handles your data.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export const PrivacyPage: React.FC = () => {
             3. Sensitive Text & Passwords Never Saved
           </h3>
           <p className="text-xs text-light-muted dark:text-dark-muted leading-relaxed">
-            ToolNest never saves passwords, passphrases, JSON documents, or financial calculations into LocalStorage, server logs, or telemetry. Once you close or reload the browser tab, in-memory states are discarded.
+            TOVIX never saves passwords, passphrases, JSON documents, or financial calculations into LocalStorage, server logs, or telemetry. Once you close or reload the browser tab, in-memory states are discarded.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export const PrivacyPage: React.FC = () => {
           External Services & Independent Platform Notice
         </h4>
         <p>
-          ToolNest is an independent utility suite. Any external trademarks or names referenced belong to their respective copyright holders. If you choose to follow an external link (such as navigating to a URL decoded from a QR code), you will be subject to that third-party website&apos;s terms and privacy policies.
+          TOVIX is an independent utility suite. Any external trademarks or names referenced belong to their respective copyright holders. If you choose to follow an external link (such as navigating to a URL decoded from a QR code), you will be subject to that third-party website&apos;s terms and privacy policies.
         </p>
         <p>
           If you have questions or recommendations for improving client-side privacy, we encourage open discussion and transparent audits.

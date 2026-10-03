@@ -6,8 +6,8 @@ import { useApp } from '../../../context/AppContext';
 export const MarkdownPreviewTool: React.FC = () => {
   const { addToast } = useApp();
   const [markdown, setMarkdown] = useState(
-    `# Welcome to ToolNest
-Every tool you need. **One nest.**
+    `# Welcome to TOVIX
+Every tool you need. **One platform.**
 
 ## Features
 - **Client-Side:** Runs completely in your browser.
@@ -16,7 +16,7 @@ Every tool you need. **One nest.**
 
 > "Simplicity is the soul of efficiency." — Austin Freeman
 
-Visit [ToolNest Website](https://toolsnest.dev) for all utilities.
+Visit [TOVIX Website](https://tovix.dev) for all utilities.
 `
   );
 

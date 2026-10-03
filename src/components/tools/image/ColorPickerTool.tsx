@@ -218,7 +218,7 @@ export const ColorPickerTool: React.FC = () => {
                 setHexColor(shade);
                 copyToClipboard(shade, `shade-${idx}`);
               }}
-              style={{ backgroundColor: shade }}
+              style={{ backgroundColor: shade, textShadow: '0 1px 2px rgba(0,0,0,0.85)' }}
               className="h-14 rounded-xl cursor-pointer p-2 flex flex-col justify-end text-[10px] font-mono font-bold text-white shadow-sm hover:scale-105 transition-transform"
             >
               <span>{shade}</span>

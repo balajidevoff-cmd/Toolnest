@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ToolNest — Everyday Digital Utility Hub</title>
+    <title>TOVIX — Everyday Digital Utility Hub</title>
     <meta name="description" content="A free, privacy-conscious collection of everyday digital utilities for students, developers, designers, and freelancers. Convert, create, calculate, and organize — all from one simple workspace." />
     <meta name="keywords" content="utilities, PDF tools, image compressor, QR code generator, scientific calculator, CGPA calculator, JSON formatter, developer tools, privacy tools" />
     
@@ -12,6 +12,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Instant theme initialization to prevent flash -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('tovix_theme') || localStorage.getItem('toolsnest_theme');
+          var theme = stored === 'light' || stored === 'dark' 
+            ? stored 
+            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Polyfills for modern JavaScript specifications required by PDF.js v6+ (Uint8Array.toHex, Promise.withResolvers) -->
+    <script>
+      (function() {
+        if (typeof Uint8Array !== 'undefined') {
+          if (!Uint8Array.prototype.toHex) {
+            Uint8Array.prototype.toHex = function() {
+              var hex = '';
+              for (var i = 0; i < this.length; i++) {
+                hex += this[i].toString(16).padStart(2, '0');
+              }
+              return hex;
+            };
+          }
+          if (!Uint8Array.fromHex) {
+            Uint8Array.fromHex = function(hex) {
+              var bytes = new Uint8Array(Math.floor(hex.length / 2));
+              for (var i = 0; i < bytes.length; i++) {
+                bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+              }
+              return bytes;
+            };
+          }
+        }
+        if (typeof Promise !== 'undefined' && !Promise.withResolvers) {
+          Promise.withResolvers = function() {
+            var resolve, reject;
+            var promise = new Promise(function(res, rej) {
+              resolve = res;
+              reject = rej;
+            });
+            return { promise: promise, resolve: resolve, reject: reject };
+          };
+        }
+      })();
+    </script>
   </head>
   <body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text antialiased selection:bg-brand-purple selection:text-white min-h-screen">
     <div id="root"></div>

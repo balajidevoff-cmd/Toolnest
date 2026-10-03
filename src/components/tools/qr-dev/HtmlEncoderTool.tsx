@@ -4,7 +4,7 @@ import { useApp } from '../../../context/AppContext';
 
 export const HtmlEncoderTool: React.FC = () => {
   const { addToast } = useApp();
-  const [input, setInput] = useState('<div class="alert">Hello & Welcome to "ToolNest"!</div>');
+  const [input, setInput] = useState('<div class="alert">Hello & Welcome to "TOVIX"!</div>');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState<'encode' | 'decode'>('encode');
   const [copied, setCopied] = useState(false);

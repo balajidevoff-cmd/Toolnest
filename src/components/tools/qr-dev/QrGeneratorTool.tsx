@@ -10,7 +10,7 @@ export const QrGeneratorTool: React.FC = () => {
   const [qrType, setQrType] = useState<QrType>('url');
 
   // Input fields
-  const [urlInput, setUrlInput] = useState('https://toolsnest.dev');
+  const [urlInput, setUrlInput] = useState('https://tovix.dev');
   const [textInput, setTextInput] = useState('');
   const [wifiSsid, setWifiSsid] = useState('');
   const [wifiPass, setWifiPass] = useState('');
@@ -258,7 +258,7 @@ export const QrGeneratorTool: React.FC = () => {
               <div className="flex flex-col gap-2 w-full">
                 <a
                   href={qrDataUrl}
-                  download="toolnest-qrcode.png"
+                  download="tovix-qrcode.png"
                   className="px-4 py-2.5 rounded-xl bg-brand-purple hover:bg-brand-accent text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
                 >
                   <Download className="w-4 h-4" />

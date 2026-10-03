@@ -5,7 +5,7 @@ export const RegexTesterTool: React.FC = () => {
   const [pattern, setPattern] = useState('[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}');
   const [flags, setFlags] = useState('gi');
   const [testText, setTestText] = useState(
-    'Contact our support at hello@toolsnest.dev or team@example.org for quick assistance.'
+    'Contact our support at hello@tovix.dev or team@example.org for quick assistance.'
   );
 
   const { matches, error } = useMemo(() => {
