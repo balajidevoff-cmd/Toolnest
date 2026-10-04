@@ -26,7 +26,7 @@ stateDiagram-v2
 
 2. **Input Ingestion & Validation**:
    - Accepts text input, form values, or dropped files via `FileUploadDropzone`.
-   - Validates MIME types, maximum file size thresholds (e.g., 50MB for PDF, 25MB for images), and string syntax.
+   - Validates MIME types, maximum file size threshold (free up to 1024MB / 1GB), and string syntax.
    - If invalid, halts immediately and displays inline validation alerts with an error toast.
 
 3. **In-Memory Computation**:

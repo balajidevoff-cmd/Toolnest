@@ -27,7 +27,7 @@ export const PrivacyPage: React.FC = () => {
             1. Zero Cloud Uploads for Local Utilities
           </h3>
           <p className="text-xs text-light-muted dark:text-dark-muted leading-relaxed">
-            When you merge PDFs, split documents, crop photos, compress images, generate hashes, or calculate checksums, the entire operation executes locally inside your browser using client-side JavaScript, Web Workers, HTML5 Canvas, and WebAssembly. Your files are not uploaded to our servers.
+            When you merge PDFs, split documents, crop photos, compress images, generate hashes, or calculate checksums, the entire operation executes locally inside your browser using client-side JavaScript, Web Workers, HTML5 Canvas, and WebAssembly. Even with large files up to 1024 MB (1 GB), your files are processed completely free in local device RAM and are never uploaded to our servers.
           </p>
         </div>
 

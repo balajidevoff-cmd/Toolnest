@@ -50,6 +50,11 @@ export const HomePage: React.FC = () => {
           <div className="w-[500px] h-[220px] bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
         </div>
 
+        {/* Highlight Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold border border-emerald-500/20 mb-2.5">
+          <span>✨ 100% Free • Free Uploads up to 1024 MB (1 GB) • Zero Cloud Storage</span>
+        </div>
+
         {/* Compact Editorial Headline */}
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-3xl mx-auto leading-tight select-none">
           Every tool you need in{' '}
@@ -60,7 +65,7 @@ export const HomePage: React.FC = () => {
 
         {/* Minimal Subtitle */}
         <p className="mt-1.5 text-xs sm:text-sm text-slate-500 dark:text-neutral-400 max-w-xl mx-auto">
-          {TOOLS.length} fast, 100% free client-side utilities. Zero cloud uploads, zero sign-in.
+          {TOOLS.length} fast, 100% free client-side utilities with generous free 1024 MB file uploads. Zero server tracking, zero sign-in.
         </p>
 
         {/* Compact Central Search Bar */}
@@ -210,7 +215,7 @@ export const HomePage: React.FC = () => {
               PDF & Document Studio
             </h3>
             <p className="text-xs text-slate-600 dark:text-neutral-400 leading-relaxed">
-              Enables local assembly, extraction, restructuring, and previewing of portable document formats. Operates using client-side JavaScript PDF parsers and Canvas rasterization with zero cloud transmission.
+              Enables local assembly, extraction, restructuring, and previewing of portable document formats with free file uploads up to 1024 MB (1 GB). Operates using client-side JavaScript PDF parsers and Canvas rasterization with zero cloud transmission.
             </p>
             <ul className="text-xs text-slate-500 dark:text-neutral-400 space-y-1 list-disc list-inside">
               <li>PDF Merger: Order and bind multiple documents</li>
@@ -229,7 +234,7 @@ export const HomePage: React.FC = () => {
               Image & Media Processing
             </h3>
             <p className="text-xs text-slate-600 dark:text-neutral-400 leading-relaxed">
-              High-performance graphics manipulation utilizing hardware-accelerated HTML5 Canvas 2D contexts. Scale, crop, recompress, and read camera metadata without server upload latency.
+              High-performance graphics manipulation supporting files up to 1024 MB utilizing hardware-accelerated HTML5 Canvas 2D contexts. Scale, crop, recompress, and read camera metadata without server upload latency.
             </p>
             <ul className="text-xs text-slate-500 dark:text-neutral-400 space-y-1 list-disc list-inside">
               <li>Image Resizer: Exact pixel or percentage scaling</li>
@@ -326,7 +331,7 @@ export const HomePage: React.FC = () => {
               Zero Paywalls
             </h4>
             <p className="text-xs text-slate-600 dark:text-neutral-400 leading-relaxed">
-              All 40 utilities are 100% free with no quotas, hidden fees, or feature locks.
+              All 40 utilities are 100% free with generous 1024 MB (1 GB) upload limits and no quotas or feature locks.
             </p>
           </div>
 
@@ -338,7 +343,7 @@ export const HomePage: React.FC = () => {
               Client-Side Isolation
             </h4>
             <p className="text-xs text-slate-600 dark:text-neutral-400 leading-relaxed">
-              Files and data are processed locally in RAM and never transmitted to a backend.
+              Files up to 1024 MB are processed locally in RAM and never transmitted to or stored on remote servers.
             </p>
           </div>
 

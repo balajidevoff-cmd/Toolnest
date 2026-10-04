@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { useApp } from '../../../context/AppContext';
+import { formatFileSize } from '../../../utils/format';
 import { Trash2, ArrowUp, ArrowDown, Download, FileText, Loader2, CheckCircle2 } from 'lucide-react';
 
 interface PdfFileItem {
@@ -116,7 +117,7 @@ export const PdfMergerTool: React.FC = () => {
         multiple={true}
         onFilesSelected={handleFilesSelected}
         title="Upload PDF files to merge"
-        subtitle="Select multiple PDF documents to unite into a single file"
+        subtitle="Select multiple PDF documents to unite into a single file • Free up to 1024MB (1GB)"
       />
 
       {files.length > 0 && (
@@ -152,7 +153,7 @@ export const PdfMergerTool: React.FC = () => {
                       {idx + 1}. {item.name}
                     </p>
                     <p className="text-[11px] text-light-muted dark:text-dark-muted">
-                      {(item.size / (1024 * 1024)).toFixed(2)} MB
+                      {formatFileSize(item.size)}
                     </p>
                   </div>
                 </div>

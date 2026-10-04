@@ -232,10 +232,10 @@ export const Header: React.FC = () => {
 
         {/* Right side actions: Privacy guarantee badge, Quick search button, Theme Toggle, Mobile Hamburger */}
         <div className="flex items-center gap-2">
-          {/* Privacy & No-Login Badge */}
-          <span className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            100% Free & Local • No Accounts
+          {/* Privacy & No-Login Badge - Compact & Non-wrapping */}
+          <span className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 whitespace-nowrap shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            100% Free & Local
           </span>
           {/* Quick Search Trigger */}
           <button

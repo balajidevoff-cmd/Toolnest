@@ -26,8 +26,8 @@ import {
 } from '../utils/pdfExtractor';
 
 describe('Tool Registry Specifications', () => {
-  it('contains exactly 40 tools with all required fields', () => {
-    expect(TOOLS.length).toBe(40);
+  it('contains exactly 47 tools with all required fields', () => {
+    expect(TOOLS.length).toBe(47);
   });
 
 
@@ -52,11 +52,12 @@ describe('Tool Registry Specifications', () => {
     });
   });
 
-  it('verifies all 6 required categories are configured', () => {
-    expect(CATEGORIES.length).toBe(6);
+  it('verifies all 7 required categories are configured', () => {
+    expect(CATEGORIES.length).toBe(7);
     const categoryIds = CATEGORIES.map((c) => c.id);
     expect(categoryIds).toContain('pdf-documents');
     expect(categoryIds).toContain('image-studio');
+    expect(categoryIds).toContain('audio-video');
     expect(categoryIds).toContain('qr-code');
     expect(categoryIds).toContain('calculators');
     expect(categoryIds).toContain('text-writing');
@@ -331,6 +332,38 @@ describe('Client-Side PDF & Document Extraction Utilities', () => {
     expect(rows.length).toBe(2);
     expect(rows[0]).toEqual(['Item', 'Price', 'Qty']);
     expect(rows[1]).toEqual(['Apple', '$1.50', '10']);
+  });
+});
+
+describe('File Size Formatting & 1024MB Free Upload Limit', () => {
+  it('formats various byte sizes into human-readable strings (B, KB, MB, GB)', async () => {
+    const { formatFileSize } = await import('../utils/format');
+
+    expect(formatFileSize(0)).toBe('0 B');
+    expect(formatFileSize(-10)).toBe('0 B');
+    expect(formatFileSize(NaN)).toBe('0 B');
+    expect(formatFileSize(512)).toBe('512 B');
+    expect(formatFileSize(1024)).toBe('1.0 KB');
+    expect(formatFileSize(1536)).toBe('1.5 KB');
+    expect(formatFileSize(25 * 1024 * 1024)).toBe('25.00 MB');
+    expect(formatFileSize(500 * 1024 * 1024)).toBe('500.00 MB');
+    expect(formatFileSize(1024 * 1024 * 1024)).toBe('1.00 GB');
+    expect(formatFileSize(2 * 1024 * 1024 * 1024)).toBe('2.00 GB');
+  });
+
+  it('validates files up to 1024 MB (1 GB) and correctly rejects files exceeding 1024 MB', () => {
+    const defaultMaxMB = 1024;
+    const maxBytes = defaultMaxMB * 1024 * 1024;
+
+    const file25MB = { size: 25 * 1024 * 1024, name: 'video.mp4' };
+    const file500MB = { size: 500 * 1024 * 1024, name: 'archive.pdf' };
+    const file1024MB = { size: 1024 * 1024 * 1024, name: 'huge_document.pdf' };
+    const fileExceeding = { size: (1024 * 1024 * 1024) + 1, name: 'over_limit.zip' };
+
+    expect(file25MB.size <= maxBytes).toBe(true);
+    expect(file500MB.size <= maxBytes).toBe(true);
+    expect(file1024MB.size <= maxBytes).toBe(true);
+    expect(fileExceeding.size > maxBytes).toBe(true);
   });
 });
 

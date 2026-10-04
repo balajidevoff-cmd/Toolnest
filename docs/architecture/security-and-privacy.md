@@ -15,7 +15,7 @@ ToolNest enforces a **zero-trust client boundary**. Unlike cloud services that i
 | **Tampering** | In-transit tampering of static application assets | Distribution exclusively over HTTPS with strict TLS 1.3, Subresource Integrity, and immutable CDN cache. |
 | **Repudiation** | Dispute over actions taken on remote servers | Irrelevant: No user identity, server logs, or transaction histories are created or retained. |
 | **Information Disclosure** | Leakage of confidential user files, passwords, or documents | 100% in-browser memory execution. Files are never transmitted over network sockets or saved to external storage. |
-| **Denial of Service** | Exhaustion of browser memory via huge input files | Strict client-side file size guardrails (e.g., 50MB PDF limit, 25MB image limit) with pre-computation verification. |
+| **Denial of Service** | Exhaustion of browser memory via huge input files | Strict client-side file size guardrail (generous free limit up to 1024MB / 1GB) with pre-computation verification. |
 | **Elevation of Privilege** | Cross-Site Scripting (XSS) via markdown rendering or JSON inspection | Custom regex and HTML entity sanitization strips `<script>`, `<iframe>`, `javascript:`, and dangerous `on*` event handlers. |
 
 ## Content Security Policy (Recommended Production Header)

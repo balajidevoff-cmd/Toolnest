@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PDFDocument, PageSizes } from 'pdf-lib';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { useApp } from '../../../context/AppContext';
+import { formatFileSize } from '../../../utils/format';
 import { Download, Loader2, Image as ImageIcon, Trash2, ArrowUp, ArrowDown } from 'lucide-react';
 
 interface ImageItem {
@@ -170,7 +171,7 @@ export const ImagesToPdfTool: React.FC = () => {
         multiple={true}
         onFilesSelected={handleFilesSelected}
         title="Upload images to convert to PDF"
-        subtitle="Select PNG, JPG, or WebP images"
+        subtitle="Select PNG, JPG, or WebP images • Free up to 1024MB (1GB)"
       />
 
       {images.length > 0 && (
@@ -257,6 +258,9 @@ export const ImagesToPdfTool: React.FC = () => {
                   />
                   <p className="text-[11px] font-medium text-light-text dark:text-dark-text truncate w-full text-center">
                     {idx + 1}. {item.name}
+                  </p>
+                  <p className="text-[10px] text-light-muted dark:text-dark-muted">
+                    {formatFileSize(item.size)}
                   </p>
 
                   <div className="flex items-center gap-1 mt-2">

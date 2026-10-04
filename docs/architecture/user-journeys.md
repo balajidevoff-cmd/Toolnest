@@ -15,7 +15,7 @@ ToolNest's user experience is optimized for speed, clarity, and zero cognitive l
 ### 2. PDF Document Processing
 1. User navigates to `/tools/pdf-merger` or `/tools/pdf-splitter`.
 2. Drops one or multiple PDF documents into the `FileUploadDropzone`.
-3. Client validates that all files are valid `application/pdf` and under the 50MB ceiling.
+3. Client validates that all files are valid `application/pdf` and under the 1024MB (1GB) free ceiling.
 4. User organizes pages or arranges document sequence.
 5. Clicks "Merge PDFs" or "Split PDF". `pdf-lib` computes the output entirely in RAM.
 6. User clicks "Download". An in-memory blob is synthesized and saved to the user's downloads folder.

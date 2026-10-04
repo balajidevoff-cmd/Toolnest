@@ -19,6 +19,15 @@ import { ImageConverterTool } from '../components/tools/image/ImageConverterTool
 import { ImageCropperTool } from '../components/tools/image/ImageCropperTool';
 import { ColorPickerTool } from '../components/tools/image/ColorPickerTool';
 import { ImageMetadataTool } from '../components/tools/image/ImageMetadataTool';
+import { ImageEnhancerTool } from '../components/tools/image/ImageEnhancerTool';
+
+// Audio & Video Studio
+import { AudioTrimmerTool } from '../components/tools/media/AudioTrimmerTool';
+import { AudioCompressorTool } from '../components/tools/media/AudioCompressorTool';
+import { AudioMergerTool } from '../components/tools/media/AudioMergerTool';
+import { VideoTrimmerTool } from '../components/tools/media/VideoTrimmerTool';
+import { VideoCompressorTool } from '../components/tools/media/VideoCompressorTool';
+import { VideoEnhancerTool } from '../components/tools/media/VideoEnhancerTool';
 
 // QR & Code
 import { QrGeneratorTool } from '../components/tools/qr-dev/QrGeneratorTool';
@@ -103,6 +112,8 @@ export const ToolWorkspacePage: React.FC = () => {
         return <ColorPickerTool />;
       case 'image-metadata':
         return <ImageMetadataTool />;
+      case 'image-enhancer':
+        return <ImageEnhancerTool />;
 
       // QR & Developer Tools
       case 'qr-generator':
@@ -167,6 +178,20 @@ export const ToolWorkspacePage: React.FC = () => {
         return <PasswordStrengthTool />;
       case 'checksum-verifier':
         return <ChecksumVerifierTool />;
+
+      // Audio & Video Studio
+      case 'audio-trimmer':
+        return <AudioTrimmerTool />;
+      case 'audio-compressor':
+        return <AudioCompressorTool />;
+      case 'audio-merger':
+        return <AudioMergerTool />;
+      case 'video-trimmer':
+        return <VideoTrimmerTool />;
+      case 'video-compressor':
+        return <VideoCompressorTool />;
+      case 'video-enhancer':
+        return <VideoEnhancerTool />;
 
       default:
         return (

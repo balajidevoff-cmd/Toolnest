@@ -88,7 +88,7 @@ export const QrReaderTool: React.FC = () => {
           multiple={false}
           onFilesSelected={handleFileSelected}
           title="Upload an image containing a QR code"
-          subtitle="Decoded 100% locally in browser without automatic URL navigation"
+          subtitle="Decoded 100% locally in browser without automatic URL navigation • Free up to 1024MB (1GB)"
         />
       ) : (
         <div className="space-y-6">

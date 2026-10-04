@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
+import { formatFileSize } from '../../../utils/format';
 import { Info, Image as ImageIcon, RefreshCw, FileText } from 'lucide-react';
 
 interface ImageMeta {
@@ -73,7 +74,7 @@ export const ImageMetadataTool: React.FC = () => {
           multiple={false}
           onFilesSelected={handleFileSelected}
           title="Upload an image to inspect technical attributes"
-          subtitle="Inspect pixel resolution, aspect ratios, exact sizes, and MIME headers"
+          subtitle="Inspect pixel resolution, aspect ratios, exact sizes, and MIME headers • Free up to 1024MB (1GB)"
         />
       ) : (
         <div className="space-y-6">
@@ -85,7 +86,7 @@ export const ImageMetadataTool: React.FC = () => {
               <div>
                 <p className="font-semibold text-sm text-light-text dark:text-dark-text">{meta.name}</p>
                 <p className="text-xs text-light-muted dark:text-dark-muted">
-                  {meta.width} × {meta.height} px • {(meta.sizeBytes / 1024).toFixed(1)} KB
+                  {meta.width} × {meta.height} px • {formatFileSize(meta.sizeBytes)}
                 </p>
               </div>
             </div>
@@ -120,7 +121,7 @@ export const ImageMetadataTool: React.FC = () => {
             <div className="p-4 rounded-xl border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card">
               <span className="text-[11px] font-semibold uppercase text-light-muted dark:text-dark-muted">Exact File Size</span>
               <p className="text-base font-bold text-light-text dark:text-dark-text mt-1">
-                {(meta.sizeBytes / 1024).toFixed(2)} KB ({meta.sizeBytes.toLocaleString()} bytes)
+                {formatFileSize(meta.sizeBytes)} ({meta.sizeBytes.toLocaleString()} bytes)
               </p>
             </div>
 

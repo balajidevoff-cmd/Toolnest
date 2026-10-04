@@ -3,6 +3,8 @@ import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { CheckCircle2, XCircle, Copy, Check, FileCheck, Loader2 } from 'lucide-react';
 import { useApp } from '../../../context/AppContext';
 
+import { formatFileSize } from '../../../utils/format';
+
 export const ChecksumVerifierTool: React.FC = () => {
   const { addToast } = useApp();
   const [file, setFile] = useState<File | null>(null);
@@ -33,7 +35,7 @@ export const ChecksumVerifierTool: React.FC = () => {
       addToast({
         type: 'error',
         title: 'Error',
-        message: 'Could not calculate file checksum.',
+        message: 'Could not calculate file checksum. For very large files, ensure sufficient system memory.',
       });
     } finally {
       setIsComputing(false);
@@ -63,7 +65,7 @@ export const ChecksumVerifierTool: React.FC = () => {
         multiple={false}
         onFilesSelected={handleFileSelected}
         title="Upload any file to compute SHA-256 checksum"
-        subtitle="Computed locally on your device via Web Crypto API"
+        subtitle="Computed locally on your device via Web Crypto API • Free up to 1024MB (1GB)"
       />
 
       {file && (
@@ -75,7 +77,7 @@ export const ChecksumVerifierTool: React.FC = () => {
               <div>
                 <p className="font-semibold text-sm text-light-text dark:text-dark-text">{file.name}</p>
                 <p className="text-xs text-light-muted dark:text-dark-muted">
-                  {(file.size / (1024 * 1024)).toFixed(2)} MB
+                  {formatFileSize(file.size)}
                 </p>
               </div>
             </div>

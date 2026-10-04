@@ -3,6 +3,7 @@ import { PDFDocument } from 'pdf-lib';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { useApp } from '../../../context/AppContext';
 import { parsePdfPageRange } from '../../../utils/pdfRange';
+import { formatFileSize } from '../../../utils/format';
 import { FileText, Download, Loader2, CheckCircle2, Scissors, RefreshCw } from 'lucide-react';
 
 export const PdfSplitterTool: React.FC = () => {
@@ -91,7 +92,7 @@ export const PdfSplitterTool: React.FC = () => {
           multiple={false}
           onFilesSelected={handleFileSelected}
           title="Upload a PDF to extract pages"
-          subtitle="Extract single pages or custom ranges into a new document"
+          subtitle="Extract single pages or custom ranges • Free up to 1024MB (1GB)"
         />
       ) : (
         <div className="space-y-6">
@@ -103,7 +104,7 @@ export const PdfSplitterTool: React.FC = () => {
               <div>
                 <p className="font-semibold text-sm text-light-text dark:text-dark-text">{file.name}</p>
                 <p className="text-xs text-light-muted dark:text-dark-muted">
-                  Total Pages: <strong>{totalPages}</strong> • {(file.size / (1024 * 1024)).toFixed(2)} MB
+                  Total Pages: <strong>{totalPages}</strong> • {formatFileSize(file.size)}
                 </p>
               </div>
             </div>

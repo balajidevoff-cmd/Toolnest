@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Copy, Check, Hash, FileCheck, Info, Loader2 } from 'lucide-react';
 import { useApp } from '../../../context/AppContext';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
+import { formatFileSize } from '../../../utils/format';
 
 export const Sha256Tool: React.FC = () => {
   const { addToast } = useApp();
@@ -125,13 +126,13 @@ export const Sha256Tool: React.FC = () => {
             multiple={false}
             onFilesSelected={handleFileSelected}
             title="Upload any file to calculate SHA-256 hash"
-            subtitle="Processed locally with browser Web Crypto API"
+            subtitle="Processed locally with browser Web Crypto API • Free up to 1024MB (1GB)"
           />
 
           {selectedFile && (
             <div className="flex items-center justify-between p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-light-border dark:border-dark-border">
               <span className="text-xs font-semibold text-light-text dark:text-dark-text truncate">
-                {selectedFile.name} ({(selectedFile.size / 1024).toFixed(1)} KB)
+                {selectedFile.name} ({formatFileSize(selectedFile.size)})
               </span>
               {isHashing && (
                 <div className="flex items-center gap-1.5 text-xs text-brand-purple font-medium">

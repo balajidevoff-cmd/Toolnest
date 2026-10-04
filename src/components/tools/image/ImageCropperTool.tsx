@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { useApp } from '../../../context/AppContext';
+import { formatFileSize } from '../../../utils/format';
 import { Crop, Download, RefreshCw } from 'lucide-react';
 
 export const ImageCropperTool: React.FC = () => {
@@ -97,13 +98,13 @@ export const ImageCropperTool: React.FC = () => {
           multiple={false}
           onFilesSelected={handleFileSelected}
           title="Upload an image to crop"
-          subtitle="Interactive cropping with standard aspect ratio presets"
+          subtitle="Interactive cropping with standard aspect ratio presets • Free up to 1024MB (1GB)"
         />
       ) : (
         <div className="space-y-6">
           <div className="flex items-center justify-between p-4 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-light-border dark:border-dark-border">
             <span className="font-semibold text-sm text-light-text dark:text-dark-text truncate">
-              {file?.name}
+              {file?.name} {file ? `(${formatFileSize(file.size)})` : ''}
             </span>
             <button
               onClick={resetAll}

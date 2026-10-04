@@ -59,7 +59,7 @@ export const FileProcessingFlowSvg: React.FC<SvgProps> = ({ theme }) => {
           MIME Type Validation
         </text>
         <text x="90" y="132" textAnchor="middle" fontSize="9.5" fill={colors.textMuted}>
-          Max Size Check (e.g. 25MB)
+          Max Size Check (Free 1024MB / 1GB)
         </text>
       </g>
 

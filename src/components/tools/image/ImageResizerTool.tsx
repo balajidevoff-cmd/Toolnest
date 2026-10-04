@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { useApp } from '../../../context/AppContext';
+import { formatFileSize } from '../../../utils/format';
 import { Lock, Unlock, Download, Loader2, RefreshCw } from 'lucide-react';
 
 export const ImageResizerTool: React.FC = () => {
@@ -34,6 +35,14 @@ export const ImageResizerTool: React.FC = () => {
       setOrigDimensions({ width: img.naturalWidth, height: img.naturalHeight });
       setWidth(img.naturalWidth);
       setHeight(img.naturalHeight);
+    };
+    img.onerror = () => {
+      addToast({
+        type: 'error',
+        title: 'Error loading image',
+        message: 'Could not decode image file.',
+      });
+      resetAll();
     };
   };
 
@@ -113,7 +122,7 @@ export const ImageResizerTool: React.FC = () => {
           multiple={false}
           onFilesSelected={handleFileSelected}
           title="Upload an image to resize"
-          subtitle="Supports PNG, JPG, and WebP images"
+          subtitle="Supports PNG, JPG, and WebP images • Free up to 1024MB (1GB)"
         />
       ) : (
         <div className="space-y-6">
@@ -129,7 +138,7 @@ export const ImageResizerTool: React.FC = () => {
                 <p className="font-semibold text-sm text-light-text dark:text-dark-text">{file?.name}</p>
                 <p className="text-xs text-light-muted dark:text-dark-muted">
                   Original: {origDimensions?.width} × {origDimensions?.height} px •{' '}
-                  {file ? (file.size / 1024).toFixed(1) : ''} KB
+                  {file ? formatFileSize(file.size) : ''}
                 </p>
               </div>
             </div>

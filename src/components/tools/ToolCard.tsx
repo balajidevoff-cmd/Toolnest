@@ -77,6 +77,11 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           bg: 'bg-[#0D9488] text-white shadow-teal-500/20',
           letter: null,
         };
+      case 'audio-video':
+        return {
+          bg: 'bg-[#9333EA] text-white shadow-purple-500/20',
+          letter: null,
+        };
       case 'qr-code':
         return {
           bg: 'bg-[#7C3AED] text-white shadow-purple-500/20',

@@ -102,6 +102,10 @@ export const AboutPage: React.FC = () => {
             <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
             <span><strong className="text-slate-900 dark:text-white">Real Computation:</strong> No dummy buttons, fake progress bars, or placeholder mockups. Every tool performs real computation.</span>
           </li>
+          <li className="flex items-start gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <span><strong className="text-slate-900 dark:text-white">Generous 1024 MB (1 GB) Free Limit:</strong> Unlike conventional online converters that restrict free users to 10 MB or 25 MB to force paid subscriptions, TOVIX provides free client-side processing for files up to 1024 MB without paywalls.</span>
+          </li>
         </ul>
       </div>
 

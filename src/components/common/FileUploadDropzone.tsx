@@ -13,7 +13,7 @@ interface FileUploadDropzoneProps {
 export const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
   accept,
   multiple = false,
-  maxSizeMB = 25,
+  maxSizeMB = 1024,
   onFilesSelected,
   title = 'Click to upload or drag & drop files here',
   subtitle,
@@ -43,7 +43,8 @@ export const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
 
     for (const file of filesArray) {
       if (file.size > maxSizeBytes) {
-        setError(`File "${file.name}" exceeds the maximum limit of ${maxSizeMB}MB.`);
+        const sizeLabel = maxSizeMB >= 1024 ? `${(maxSizeMB / 1024).toFixed(0)}GB` : `${maxSizeMB}MB`;
+        setError(`File "${file.name}" exceeds the maximum free limit of ${maxSizeMB}MB (${sizeLabel}).`);
         return;
       }
       validFiles.push(file);
@@ -69,6 +70,8 @@ export const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
       fileInputRef.current.value = '';
     }
   };
+
+  const limitLabel = maxSizeMB >= 1024 ? `${maxSizeMB}MB (${(maxSizeMB / 1024).toFixed(0)}GB)` : `${maxSizeMB}MB`;
 
   return (
     <div className="w-full">
@@ -97,12 +100,16 @@ export const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
           <UploadCloud className="w-6 h-6" />
         </div>
 
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-semibold mb-2 border border-emerald-500/20">
+          <span>✨ 100% Free • Up to {limitLabel}</span>
+        </div>
+
         <p className="text-sm font-semibold text-light-text dark:text-dark-text">
           {title}
         </p>
 
         <p className="text-xs text-light-muted dark:text-dark-muted mt-1">
-          {subtitle || `${accept ? `Supported formats: ${accept}` : 'All files allowed'} (Max: ${maxSizeMB}MB)`}
+          {subtitle || `${accept ? `Supported formats: ${accept}` : 'All files allowed'} • Free up to ${limitLabel}`}
         </p>
       </div>
 

@@ -1,6 +1,7 @@
 export type ToolCategory =
   | 'pdf-documents'
   | 'image-studio'
+  | 'audio-video'
   | 'qr-code'
   | 'calculators'
   | 'text-writing'

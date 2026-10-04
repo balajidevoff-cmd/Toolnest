@@ -34,7 +34,7 @@ export const SecurityThreatModelSvg: React.FC<SvgProps> = ({ theme }) => {
     },
     {
       threat: 'T4: Browser Memory Denial of Service',
-      mitigation: 'M4: Strict file size caps (max 25MB) & explicit URL.revokeObjectURL calls.',
+      mitigation: 'M4: Generous 1024MB (1GB) client guardrail & explicit URL.revokeObjectURL calls.',
     },
     {
       threat: 'T5: Application Crash via Malformed JSON',

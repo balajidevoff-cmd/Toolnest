@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FileUploadDropzone } from '../../common/FileUploadDropzone';
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RefreshCw, FileText, Loader2, AlertCircle } from 'lucide-react';
 import { pdfjsLib } from '../../../utils/pdfWorkerSetup';
+import { formatFileSize } from '../../../utils/format';
 
 export const PdfPreviewTool: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -109,16 +110,19 @@ export const PdfPreviewTool: React.FC = () => {
           multiple={false}
           onFilesSelected={handleFileSelected}
           title="Upload a PDF to view and inspect pages"
-          subtitle="Rendered locally with PDF.js client-side engine"
+          subtitle="Rendered locally with PDF.js client-side engine • Free up to 1024MB (1GB)"
         />
       ) : (
         <div className="space-y-4">
           {/* Controls Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-light-border dark:border-dark-border">
-            <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-brand-purple" />
+            <div className="flex items-center gap-2 min-w-0">
+              <FileText className="w-4 h-4 text-brand-purple shrink-0" />
               <span className="text-xs font-semibold text-light-text dark:text-dark-text truncate max-w-xs">
                 {file.name}
+              </span>
+              <span className="text-[11px] text-light-muted dark:text-dark-muted shrink-0">
+                ({formatFileSize(file.size)})
               </span>
             </div>
 
