@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
     <footer className="w-full bg-light-card/60 dark:bg-[#08080a] border-t border-light-border dark:border-white/[0.08] mt-20 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
         {/* Prominent 100% Free & Local Banner */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-gradient-to-r dark:from-purple-950/40 dark:via-indigo-950/30 dark:to-purple-950/40 border border-slate-200/90 dark:border-purple-500/30 shadow-md shadow-purple-500/5 dark:shadow-purple-900/10 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 rounded-2xl bg-white dark:bg-[#141226] dark:bg-gradient-to-r dark:from-[#1e1338] dark:via-[#141226] dark:to-[#1b1235] border border-slate-200/90 dark:border-purple-500/30 shadow-md shadow-purple-500/5 dark:shadow-purple-950/40 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <div className="p-3 rounded-xl bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-500/30 shrink-0">
               <Lock className="w-6 h-6" />
