@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8.3-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Tests-35%20Passed-success?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![Vitest](https://img.shields.io/badge/Tests-40%20Passed-success?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25%20Client--Side-10B981?style=for-the-badge&logo=shield&logoColor=white)](#-privacy--security-architecture)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
@@ -14,7 +14,7 @@
 
 **Every tool you need in one place. 100% Free, Private & Local — No Server Uploads.**
 
-[Explore All 47 Utilities](#-the-47-built-in-tools) • [Architecture Center](#-system-architecture-hub) • [Quick Start](#-quick-start) • [Contributing](docs/contributing.md)
+[Explore All 48 Utilities](#-the-48-built-in-tools) • [Architecture Center](#-system-architecture-hub) • [Quick Start](#-quick-start) • [Contributing](docs/contributing.md)
 
 </div>
 
@@ -22,12 +22,12 @@
 
 ## 🌟 Overview & Highlights
 
-**TOVIX** (repository: `Toolnest`) is an open-source, privacy-first digital utility suite providing **47 production-grade tools** across 7 functional categories, backed by an interactive system architecture center.
+**TOVIX** (repository: `Toolnest`) is an open-source, privacy-first digital utility suite providing **48 production-grade tools** across 7 functional categories, backed by an interactive system architecture center.
 
 Everything executes **100% locally in the user's browser memory sandbox** using HTML5 Canvas, Web Audio API, Web Workers, browser WebCrypto, and client-side PDF compilation engines. **Zero files, video streams, audio buffers, or text snippets are ever uploaded to an external server.**
 
 ### Core Pillars
-- **⚡ 47 Production-Grade Built-In Utilities**: Across PDF & Documents, Image Studio, Audio & Video Studio, QR & Developer Utilities, Calculators & Converters, Text & Writing, and Cryptographic Security.
+- **⚡ 48 Production-Grade Built-In Utilities**: Across PDF & Documents, Image Studio, Audio & Video Studio, QR & Developer Utilities, Calculators & Converters, Text & Writing, and Cryptographic Security.
 - **🔒 Absolute Client-Side Privacy**: All processing runs locally in browser RAM. Zero cloud uploads, zero telemetry, zero analytics beacons, zero ads, zero user accounts.
 - **🚀 Generous 1024 MB (1 GB) File Processing**: Process large PDF documents, high-resolution photos, multi-track audio, and 4K video clips locally without artificial limits.
 - **🎨 WCAG AA Accessible Design System**: Curated dark and light themes with strict contrast compliance (>= 4.5:1 text, >= 3:1 graphical elements) backed by an inline anti-FOUC script.
@@ -56,7 +56,7 @@ Explore the complete architectural documentation in the [`docs/architecture/`](d
 
 ---
 
-## 🛠️ The 47 Built-In Tools
+## 🛠️ The 48 Built-In Tools
 
 ### 1. 📄 PDF & Documents (5 Tools)
 - **PDF Merger**: Combine multiple PDF files into one clean document with drag-and-drop reordering.
@@ -72,7 +72,7 @@ Explore the complete architectural documentation in the [`docs/architecture/`](d
 - **Image Cropper**: Interactive visual cropping with 1:1, 16:9, 4:3, and custom aspect ratio presets.
 - **Color Picker & Palette**: Extract dominant color schemes, generate harmonious palettes, and copy HEX, RGB, and HSL values.
 - **Image Metadata Viewer**: Inspect genuine browser-accessible technical properties, EXIF metadata, dimensions, and MIME types.
-- **Image Quality Enhancer**: Super-resolution clarity boosting, detail sharpening, and upscale options (up to 4x) with an interactive before/after split slider.
+- **Image Background & People Remover**: Instant 100% client-side background removal, subject isolation, and person eraser with zero server uploads. Powered by in-browser neural network segmentation (`ISNet` WebGPU/WASM) to isolate people with hair-level precision, plus a high-speed local color keyer with skin-tone protection. Includes three specialized modes: **Remove Background (Keep People)**, **Remove People (Keep Scenery)**, and **Magic Eraser (Select & Erase Specific People)** using content-aware background inpainting. Features interactive comparison views, precision touch-up eraser/restore brush, halo choke, de-speckle island filter, eyedropper, feathering, and backdrop replacements.
 
 ### 3. 🎬 Audio & Video Studio (6 Tools)
 - **Audio Trimmer & Cutter**: Precision audio slicing with waveform scrubbing, start/end markers, and instant WAV export via Web Audio API.
@@ -174,7 +174,7 @@ Toolnest/
 │   ├── components/
 │   │   ├── common/             # Reusable UI components (Dropzone, Toast, etc.)
 │   │   ├── layout/             # Header, Footer, Navigation, Command Palette
-│   │   └── tools/              # 47 Tool implementations organized by category
+│   │   └── tools/              # 48 Tool implementations organized by category
 │   │       ├── audio-video/    # Audio & Video tools
 │   │       ├── calculators/    # Calculators & Converters
 │   │       ├── image/          # Image Studio tools

@@ -233,6 +233,21 @@ export const TOOLS: ToolMetadata[] = [
     privacyLabel: 'Processed in browser memory. Zero upload.',
     badge: 'new',
   },
+  {
+    id: 'image-bg-remover',
+    name: 'Image Background Remover',
+    slug: 'image-bg-remover',
+    description: 'Remove or replace image backgrounds instantly 100% locally in your browser with zero server uploads.',
+    category: 'image-studio',
+    icon: 'Scissors',
+    keywords: ['image', 'background remover', 'remove bg', 'transparent background', 'png', 'cutout', 'chroma key', 'green screen', 'erase background'],
+    isBuiltIn: true,
+    isPopular: true,
+    route: '/tools/image-bg-remover',
+    shortInstructions: 'Upload an image, auto-detect or click the background, tune tolerance and feathering, and export a clean transparent PNG.',
+    privacyLabel: '100% Client-Side. No images are ever uploaded to a server.',
+    badge: 'new',
+  },
 
   // --- Category C: QR & Developer Tools ---
   {

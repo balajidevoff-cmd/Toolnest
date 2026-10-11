@@ -26,8 +26,8 @@ import {
 } from '../utils/pdfExtractor';
 
 describe('Tool Registry Specifications', () => {
-  it('contains exactly 47 tools with all required fields', () => {
-    expect(TOOLS.length).toBe(47);
+  it('contains all registered tools with required fields', () => {
+    expect(TOOLS.length).toBe(48);
   });
 
 

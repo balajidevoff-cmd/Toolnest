@@ -2,6 +2,33 @@
 
 All notable changes to the **ToolNest** platform are documented in this file.
 
+## [2.3.0] - 2026-10-11
+
+### ✨ Image Background Remover Perfection & Matte Refinement
+- **Precision Touch-Up Brush**: Interactive brush on the preview allowing manual erasing of stray specks (`alpha = 0`) or restoring clipped details (`alpha = 255`).
+- **Disconnected Island Cleaner**: Morphological component filter automatically eliminating isolated floating dust/noise islands.
+- **Dynamic Halo Choke & De-spill**: Real-time slider controls to trim residual wall halos on shoulders and hair in < 15ms.
+
+## [2.2.0] - 2026-10-11
+
+### 🖼️ New Feature: Client-Side Image Background & People Remover
+- **100% In-Browser Execution**:
+  - Image background removal, subject matting, and person erasing executed entirely within browser RAM sandbox using WebAssembly, WebGPU, and HTML5 Canvas.
+  - Zero server uploads, zero API calls, and zero external network latency.
+- **AI Neural Matting (ISNet)**:
+  - Deep learning segmentation runs locally to isolate people, portraits, hair, and clothing with precision.
+  - Keeps people intact and eliminates backgrounds behind them cleanly.
+- **Selective Person Eraser & Remove People Modes**:
+  - **Remove People Mode**: Eliminates people from the photo and preserves the background scenery.
+  - **Magic Eraser**: Interactive brush to paint over and remove specific selected individuals using content-aware diffusion inpainting.
+- **High-Speed Studio Color Keyer & Skin Protection**:
+  - Heuristic human skin protection prevents faces, hands, and bodies from being keyed out.
+  - Upper-boundary auto-sampling avoids mistaking subjects' clothing for background.
+  - Debounced interactive rendering ensures fast, lag-free slider adjustments.
+- **Backdrop Replacement & Flexible Export**:
+  - Transparent checkerboard, solid colors, curated studio gradients, and portrait bokeh blur.
+  - Instant 1-click Download and clipboard copying (`PNG`, `WebP`, `JPEG`).
+
 ## [2.1.0] - 2026-09-26
 
 ### 🎨 Complete Light Theme & WCAG AA Overhaul

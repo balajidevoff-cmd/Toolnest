@@ -20,6 +20,7 @@ import { ImageCropperTool } from '../components/tools/image/ImageCropperTool';
 import { ColorPickerTool } from '../components/tools/image/ColorPickerTool';
 import { ImageMetadataTool } from '../components/tools/image/ImageMetadataTool';
 import { ImageEnhancerTool } from '../components/tools/image/ImageEnhancerTool';
+import { ImageBgRemoverTool } from '../components/tools/image/ImageBgRemoverTool';
 
 // Audio & Video Studio
 import { AudioTrimmerTool } from '../components/tools/media/AudioTrimmerTool';
@@ -114,6 +115,8 @@ export const ToolWorkspacePage: React.FC = () => {
         return <ImageMetadataTool />;
       case 'image-enhancer':
         return <ImageEnhancerTool />;
+      case 'image-bg-remover':
+        return <ImageBgRemoverTool />;
 
       // QR & Developer Tools
       case 'qr-generator':
