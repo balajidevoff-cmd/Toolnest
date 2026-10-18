@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { AppProvider } from './context/AppContext';
 import { AppLayout } from './components/layout/AppLayout';
 
@@ -47,6 +48,7 @@ export const App: React.FC = () => {
             </Route>
           </Routes>
         </Suspense>
+        <Analytics />
       </BrowserRouter>
     </AppProvider>
   );
